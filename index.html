@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Website</title>
+    <link rel="icon" type="image/jpg" href="https://www.chatbot.com/favicon.ico" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script crossorigin="anonymous" src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+    <style>
+        .chat-toggle {
+            height: 50px;
+            width: 50px;
+            background-image: url('https://docs.microsoft.com/en-us/azure/bot-service/v4sdk/media/logo_bot.svg?view=azure-bot-service-4.0');
+            position: fixed;
+            bottom: 20px;
+            right: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .highlight {
+            height: 500px;
+            width: 400px;
+            margin: 10px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: 1000;
+            border: 1px solid black;
+        }
+
+        .webchat {
+            height: 0px;
+            width: 400px;
+            margin: 0px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: 1000;
+            visibility: hidden;
+        }
+
+        .barHighlight {
+            display: block;
+            background-color: rgb(32, 31, 85);
+            height: 40px;
+            margin: 10px;
+            width: 403px;
+            position: fixed;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* padding: 0px 20px; */
+            top: calc(100vh - 560px);
+            color: white;
+        }
+
+        .botTitlebar {
+            display: none;
+            background-color: blue;
+            height: 40px;
+            width: 403px;
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 1000;
+            visibility: hidden;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body
+    style="background-image: url('https://cdn2.vectorstock.com/i/1000x1000/71/36/school-time-website-landing-page-design-vector-26627136.jpg'); background-repeat: no-repeat; background-size: cover;">
+    <div class="chat-toggle" role="navigation" tabindex="1" title="Open ChatBot">
+
+    </div>
+    <div class='botTitlebar' role="navigation">
+        <button title="Minimize Bot Window"
+            style="width: 30px; margin-left: 20px; background-color: rgb(32, 31, 85); border: none;"><i
+                class="fa fa-arrow-down" aria-hidden="true" id="down"
+                style="cursor: pointer; color:white;"></i></button>
+        <h4 tabindex="1">CUSTOMER SUPPORT</h4>
+        <img src="https://docs.microsoft.com/en-us/azure/bot-service/v4sdk/media/logo_bot.svg?view=azure-bot-service-4.0"
+            alt="Bot Icon" width="25px" height="25px" style="margin-right: 20px; border-radius: 100%;">
+
+    </div>
+    <div id="webchat" class="webchat" role="main">
+    </div>
+    <script>
+        const styleOptions = {
+            botAvatarImage:
+                'https://docs.microsoft.com/en-us/azure/bot-service/v4sdk/media/logo_bot.svg?view=azure-bot-service-4.0',
+            botAvatarInitials: 'CB',
+            userAvatarImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSTXl31AKsJTWYy4tZSgCJSWMcKMs8kCI_DIBy40MGfrCgb1rHYX0aAkRS3aZWQl3jSg0&usqp=CAU',
+            userAvatarInitials: 'GU',
+            bubbleBackground: 'rgba(0, 0, 255, .1)',
+            bubbleFromUserBackground: 'rgba(0, 255, 0, .1)',
+        };
+        window.WebChat.renderWebChat(
+            {
+                directLine: window.WebChat.createDirectLine({
+                    token: 'I6qRXreQ1ck.31q3h_fS2fO-RI8ewY4LRu6jFXoagiUZ5zUNd4R2qEw'
+                }),
+                locale: 'en-US',
+                styleOptions
+            },
+            document.getElementById('webchat')
+        );
+    </script>
+    <script>
+        $(".chat-toggle").click(function () {
+            $('.webchat').removeClass("webchat").addClass("highlight");
+            $('.botTitlebar').removeClass("botTitlebar").addClass("barHighlight");
+        });
+    </script>
+    <script>
+        $("#down").click(function () {
+            $('.highlight').removeClass("highlight").addClass("webchat");
+            $('.barHighlight').removeClass("barHighlight").addClass("botTitlebar");
+        });
+    </script>
+</body>
+
+</html>
