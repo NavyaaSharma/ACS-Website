@@ -52,7 +52,7 @@
                     console.log(res)
                     if (res.status == 204) {
                         alert('You are not authorized to this live chat. Please consult our chatbot first')
-                        window.location.href = "http://localhost:8080";
+                        window.location.href = "https://customer-support.azurewebsites.net";
                     }
                     res.json().then(d => {
                         messagebox.value = "My issue is: " + d.data;
@@ -61,13 +61,13 @@
         }
         else {
             alert('You are not authorized to this live chat. Please consult our chatbot first')
-            window.location.href = "http://localhost:8080";
+            window.location.href = "https://customer-support.azurewebsites.net";
         }
 
         const callButton = document.getElementById("join-meeting-button");
         callButton.addEventListener("click", async () => {
             var name = document.getElementById('username').value
-            window.location.href = `http://localhost:8080/meet.html?id=${clientID}&dept=${dept}&name=${name}`
+            window.location.href = `https://customer-support.azurewebsites.net/meet.html?id=${clientID}&dept=${dept}&name=${name}`
         })
     </script>
 

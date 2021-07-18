@@ -52,7 +52,7 @@ if (clientID && dept) {
             console.log(res)
             if (res.status == 204) {
                 alert('You are not authorized to this live chat. Please consult our chatbot first')
-                window.location.href = "http://localhost:8080";
+                window.location.href = "https://customer-support.azurewebsites.net";
             }
             res.json().then(d => {
                 messagebox.value = "My issue is: " + d.data;
@@ -62,7 +62,7 @@ if (clientID && dept) {
 }
 else {
     alert('You are not authorized to this live chat. Please consult our chatbot first')
-    window.location.href = "http://localhost:8080";
+    window.location.href = "https://customer-support.azurewebsites.net";
 }
 async function init() {
 
@@ -166,7 +166,7 @@ async function renderSentMessage(message) {
 hangUpButton.addEventListener("click", async () => {
     // end the current call
     await call.hangUp();
-    window.location.href = "http://localhost:8080/thanks.html";
+    window.location.href = "https://customer-support.azurewebsites.net/thanks.html";
 });
 
 messagebox.addEventListener("keyup", function (event) {
