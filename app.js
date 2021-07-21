@@ -168,7 +168,7 @@ async function renderSentMessage(message) {
 hangUpButton.addEventListener("click", async () => {
     // end the current call
     await call.hangUp();
-    window.location.href = "http://localhost:8080/thanks.html";
+    window.location.href = "https://customer-support.azurewebsites.net/thanks.html";
 });
 
 messagebox.addEventListener("keyup", function (event) {
