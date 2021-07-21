@@ -17,8 +17,13 @@
         for connecting
         with
         us.</h2>
-    <a class="btn btn-primary" href="http://localhost:8080" role="button">Go back to home
-        page</a>
+    <button class="btn btn-lg btn-danger" id="close-modal">Close</button>
+
+    <script>
+        document.getElementById('close-modal').addEventListener('click', async () => {
+            window.top.location.href = "http://localhost:8080"
+        })
+    </script>
 </body>
 
 </html>

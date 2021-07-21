@@ -18,6 +18,20 @@
             cursor: pointer;
         }
 
+        #notify {
+            height: 60px;
+            width: 230px;
+            position: fixed;
+            bottom: 45px;
+            right: 75px;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: rgb(212, 212, 159);
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+        }
+
         .highlight {
             height: 500px;
             width: 400px;
@@ -72,8 +86,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body
-    style="background-image: url('https://cdn2.vectorstock.com/i/1000x1000/71/36/school-time-website-landing-page-design-vector-26627136.jpg'); background-repeat: no-repeat; background-size: cover;">
+<body onload="findAttr()"
+    style="background-image: url('https://i.pinimg.com/originals/22/43/8a/22438a20fcfd2f52713f8ce864f8da14.png');">
+    <div id="notify" style="display: none;">
+        <h4>Hi I am your customer support chatbot. How can I help you?</h4>
+    </div>
     <div class="chat-toggle" role="navigation" tabindex="1" title="Open ChatBot">
 
     </div>
@@ -121,6 +138,37 @@
             $('.highlight').removeClass("highlight").addClass("webchat");
             $('.barHighlight').removeClass("barHighlight").addClass("botTitlebar");
         });
+    </script>
+    <script>
+        function findAttr() {
+
+            var a = document.getElementsByTagName('a')[0];
+            var chatbutton = document.getElementsByClassName('chat-toggle')[0];
+            if (a == undefined)
+                setTimeout(findAttr, 100);
+            else {
+                a.removeAttribute('target');
+                a.style.display = "none";
+                $("#down").click();
+                chatbutton.style.display = "none"
+                var ifrm = document.createElement("iframe");
+                ifrm.setAttribute("src", a.href);
+                ifrm.style.width = "1250px";
+                ifrm.style.height = "575px";
+                ifrm.style.padding = "2px";
+                ifrm.style.border = "2px solid black";
+                document.body.appendChild(ifrm);
+            }
+        }
+
+        setTimeout(() => {
+            document.getElementById('notify').style.display = "flex"
+            $('#notify').fadeIn('fast')
+        }, 3000);
+
+        setTimeout(() => {
+            $('#notify').fadeOut('fast')
+        }, 10000);
     </script>
 </body>
 

@@ -6,7 +6,7 @@ import { ChatClient } from "@azure/communication-chat";
 // document.getElementById("screen2").style.display = 'none';
 // document.getElementById("loadingDiv").removeAttribute('hidden');
 // document.getElementById("wait").removeAttribute('hidden');
-
+console.log("wwww")
 var params = new URLSearchParams(window.location.search)
 var clientID = params.get('id');
 var dept = params.get('dept');
@@ -47,12 +47,13 @@ else if (dept == "Sales") {
     threadIdInput = "19:meeting_NjFhZTcxYTUtNDJmYi00YzFhLWE2N2ItYWE2MGU3NWZjOTU5@thread.v2"
 }
 if (clientID && dept) {
+    console.log("zzzzz")
     fetch(
         `https://chatbot-dictionary.herokuapp.com/get/query/${clientID}`).then((res) => {
             console.log(res)
             if (res.status == 204) {
                 alert('You are not authorized to this live chat. Please consult our chatbot first')
-                window.location.href = "https://customer-support.azurewebsites.net";
+                window.location.href = "http://localhost:8080";
             }
             res.json().then(d => {
                 messagebox.value = "My issue is: " + d.data;
@@ -62,9 +63,10 @@ if (clientID && dept) {
 }
 else {
     alert('You are not authorized to this live chat. Please consult our chatbot first')
-    window.location.href = "https://customer-support.azurewebsites.net";
+    window.location.href = "http://localhost:8080";
 }
 async function init() {
+    console.log("hhhhhhhh")
 
     const connectionString = "endpoint=https://acs-chatbot.communication.azure.com/;accesskey=NnAc35r6H4rokCq/TmBOtoWb0LiVsRgeav+eQ/h0kRLv6swISKDq3cB0dcuLUH3XQz2r5btX4/h+uW0Hsugxyg==";
     const endpointUrl = "https://acs-chatbot.communication.azure.com/";
@@ -166,7 +168,7 @@ async function renderSentMessage(message) {
 hangUpButton.addEventListener("click", async () => {
     // end the current call
     await call.hangUp();
-    window.location.href = "https://customer-support.azurewebsites.net/thanks.html";
+    window.location.href = "http://localhost:8080/thanks.html";
 });
 
 messagebox.addEventListener("keyup", function (event) {
